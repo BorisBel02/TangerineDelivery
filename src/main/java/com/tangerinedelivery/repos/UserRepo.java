@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface UserRepo extends CrudRepository<UserEntity, Long> {
     public UserEntity findUserEntityByEmail(String email);
+    public Boolean existsByEmail(String email);
 }
