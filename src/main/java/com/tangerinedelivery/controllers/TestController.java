@@ -24,7 +24,7 @@ public class TestController{
     private ProductRepo productRepo;
 
 
-    @GetMapping("/getRegDTOs")
+    @GetMapping("/getRegDTO")
     ResponseEntity<?> getRegDTOs(){
         return new ResponseEntity<>(new RegistrationDTO(), HttpStatus.OK);
     }

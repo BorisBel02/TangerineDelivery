@@ -7,8 +7,8 @@ import java.util.Set;
 @Table(name = "users")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Long userID;
+    @GeneratedValue(strategy =  GenerationType.AUTO)
+    private Long id;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
@@ -36,11 +36,11 @@ public class UserEntity {
 
 
     public Long getUserID() {
-        return userID;
+        return id;
     }
 
     public void setUserID(Long userID) {
-        this.userID = userID;
+        this.id = userID;
     }
 
     public String getEmail() {

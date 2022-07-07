@@ -1,5 +1,6 @@
 package com.tangerinedelivery.controllers;
 
+import com.tangerinedelivery.DTOs.LoginDTO;
 import com.tangerinedelivery.DTOs.RegistrationDTO;
 import com.tangerinedelivery.entities.UserEntity;
 import com.tangerinedelivery.repos.RoleRepo;
@@ -8,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -60,6 +64,18 @@ public class AuthController {
         return new ResponseEntity<>("User registrated successfully", HttpStatus.OK);
     }
 
+    @PostMapping("/signin")
+    public ResponseEntity<?> signIn(@RequestBody LoginDTO loginDTO){
+        if(!userRepo.existsByEmail(loginDTO.getEmail())){
+            return new ResponseEntity<>("Wrong email", HttpStatus.I_AM_A_TEAPOT);//ХЫЫЫЫЫЫЫ
+        }
+        if(userRepo.findUserEntityByEmail(loginDTO.getEmail()).getPassword().equals(passwordEncoder.encode(loginDTO.getPassword()))){
+            return new ResponseEntity<>("Wrong password", HttpStatus.BAD_REQUEST);
+        }
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getEmail(), loginDTO.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return new ResponseEntity<>("User signed in successfully", HttpStatus.OK);
+    }
     Boolean containsOnlyLetters(String str){
         char[] symbolsArray = str.toCharArray();
         for(char ch : symbolsArray){
