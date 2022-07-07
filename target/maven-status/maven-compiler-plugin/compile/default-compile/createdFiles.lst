@@ -1,7 +1,0 @@
-com\tangerinedelivery\models\UserModel.class
-com\tangerinedelivery\repos\ProductRepo.class
-com\tangerinedelivery\config\SwaggerConfig.class
-com\tangerinedelivery\services\UserService.class
-com\tangerinedelivery\TangerineDeliveryApplication.class
-com\tangerinedelivery\controllers\TestController.class
-com\tangerinedelivery\entities\ProductEntity.class
