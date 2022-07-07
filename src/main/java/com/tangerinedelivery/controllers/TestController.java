@@ -30,9 +30,9 @@ public class TestController{
     ProductEntity prod(){
         return new ProductEntity("Orange", 500, "Just an orange");
     }
-    @PostMapping("/")
+   /* @PostMapping("/")
     ProductEntity post(){
         return productRepo.save(new ProductEntity("Orange", 500, "Just an orange"));
     }
-
+*/
 }
