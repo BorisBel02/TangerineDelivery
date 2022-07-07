@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ProductRepo extends CrudRepository<ProductEntity, Integer> {
     List<ProductEntity> selectAll();
-    List<ProductEntity> findByName(String productID);
+    List<ProductEntity> findByProductID(String productID);
 }

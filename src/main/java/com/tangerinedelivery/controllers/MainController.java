@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class MainController {
 
-    @Autowired
+
     private ProductRepo productRepo;
-
-
+    @Autowired
+    public MainController(ProductRepo productRepo) {
+        this.productRepo = productRepo;
+    }
 }
