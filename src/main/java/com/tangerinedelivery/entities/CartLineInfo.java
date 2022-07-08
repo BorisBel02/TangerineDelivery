@@ -1,21 +1,27 @@
-package com.tangerinedelivery.models;
+package com.tangerinedelivery.entities;
 
 import com.tangerinedelivery.entities.ProductEntity;
 
+import javax.persistence.*;
+
+@Entity
+@Table (name = "cartline")
 public class CartLineInfo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private Long productID;
     private int quantity;
     public CartLineInfo() {
-        this.quantity = 0;
     }
-
     public int getQuantity() {
         return quantity;
-    }
-    public Long getProductID() {
-        return productID;
     }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    public Long getProductID() {
+        return productID;
+    }
+
 }
