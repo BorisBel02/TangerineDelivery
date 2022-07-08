@@ -4,15 +4,13 @@ import com.tangerinedelivery.entities.UserEntity;
 import com.tangerinedelivery.exception.EmailAlreadyUsedException;
 import com.tangerinedelivery.exception.UserNotFoundException;
 import com.tangerinedelivery.services.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -23,7 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @ApiOperation("Get all users")
+
     @GetMapping("/all")
     public List<UserEntity> getAll()
     {
@@ -31,7 +29,7 @@ public class UserController {
     }
 
 
-    @ApiOperation("Get single user by his id")
+
     @GetMapping
     public ResponseEntity getUser(@RequestParam Long id) {
         try {
@@ -41,7 +39,7 @@ public class UserController {
         }
     }
 
-    @ApiOperation("Add user")
+
     @PostMapping
     public ResponseEntity addUser(@RequestBody UserEntity user) {
         try {

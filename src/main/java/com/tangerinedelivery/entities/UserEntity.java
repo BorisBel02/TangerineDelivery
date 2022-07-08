@@ -1,5 +1,6 @@
 package com.tangerinedelivery.entities;
 
+
 import javax.persistence.*;
 import java.util.Set;
 
