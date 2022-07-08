@@ -7,6 +7,7 @@ import java.util.List;
 public class CartInfo {
         private int orderNum;
         private UserModel customerInfo;
+        private ProductEntity product;
         private final List<CartLineInfo> cartLines = new ArrayList<CartLineInfo>();
         public CartInfo() {
 
@@ -33,7 +34,7 @@ public class CartInfo {
 
         private CartLineInfo findLineById(Long id) {
             for (CartLineInfo line : this.cartLines) {
-                if (line.getProductInfo().getProductID().equals(id)) {
+                if (line.getProductID().equals(id)) {
                     return line;
                 }
             }
@@ -46,7 +47,6 @@ public class CartInfo {
             if (line == null) {
                 line = new CartLineInfo();
                 line.setQuantity(0);
-                line.setProductInfo(productInfo);
                 this.cartLines.add(line);
             }
             int newQuantity = line.getQuantity() + quantity;
@@ -99,7 +99,7 @@ public class CartInfo {
         public double getAmountTotal() {
             double total = 0;
             for (CartLineInfo line : this.cartLines) {
-                total += line.getAmount();
+                total+= product.getPrice()*line.getQuantity();
             }
             return total;
         }
@@ -108,7 +108,7 @@ public class CartInfo {
             if (cartForm != null) {
                 List<CartLineInfo> lines = cartForm.getCartLines();
                 for (CartLineInfo line : lines) {
-                    this.updateProduct(line.getProductInfo().getProductID(), line.getQuantity());
+                    this.updateProduct(line.getProductID(), line.getQuantity());
                 }
             }
 

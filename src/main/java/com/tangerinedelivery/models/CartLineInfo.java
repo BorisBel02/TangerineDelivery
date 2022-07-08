@@ -3,30 +3,19 @@ package com.tangerinedelivery.models;
 import com.tangerinedelivery.entities.ProductEntity;
 
 public class CartLineInfo {
-    private ProductEntity productInfo;
+    private Long productID;
     private int quantity;
-
     public CartLineInfo() {
         this.quantity = 0;
-    }
-
-    public ProductEntity getProductInfo() {
-        return productInfo;
-    }
-
-    public void setProductInfo(ProductEntity productInfo) {
-        this.productInfo = productInfo;
     }
 
     public int getQuantity() {
         return quantity;
     }
-
+    public Long getProductID() {
+        return productID;
+    }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public double getAmount() {
-        return this.productInfo.getPrice() * this.quantity;
     }
 }
