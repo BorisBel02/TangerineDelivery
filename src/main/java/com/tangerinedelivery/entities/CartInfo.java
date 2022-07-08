@@ -16,16 +16,8 @@ public class CartInfo {
     @JoinTable(name = "cart",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "cart_id"))
-    private final List<CartLineInfo> cartLines = new ArrayList<CartLineInfo>();
+    private List<CartLineInfo> cartLines = new ArrayList<CartLineInfo>();
 
-    public CartInfo() {
-    }
-    public CartInfo(int ProductID, int Quantity) {
-        CartLineInfo cart = null;
-        cart.setProductID(ProductID);
-        cart.setQuantity(Quantity);
-        cartLines.add(cart);
-    }
     public List<CartLineInfo> getCartLines() {
         return cartLines;
     }
