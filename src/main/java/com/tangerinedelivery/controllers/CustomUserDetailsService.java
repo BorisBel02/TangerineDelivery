@@ -34,7 +34,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                     user.get().getPassword(), mapRolesToAuthorities(user.get().getRoles()));
         }
         else {
-            throw  new UsernameNotFoundException("User not found with username or email:" + Email);
+            throw  new UsernameNotFoundException("User not found with email:" + Email);
         }
     }
 
