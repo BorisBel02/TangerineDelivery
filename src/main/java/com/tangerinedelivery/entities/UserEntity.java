@@ -1,6 +1,8 @@
 package com.tangerinedelivery.entities;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -26,6 +28,8 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
+    private Boolean emailConfirmed;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -33,6 +37,7 @@ public class UserEntity {
     private Set<RoleEntity> roles;
 
     public UserEntity() {
+        emailConfirmed = false;
     }
 
 
