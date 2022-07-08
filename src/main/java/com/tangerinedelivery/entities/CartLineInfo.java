@@ -10,7 +10,7 @@ public class CartLineInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private Long productID;
+    private int productID;
     private int quantity;
     public CartLineInfo() {
     }
@@ -20,8 +20,11 @@ public class CartLineInfo {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    public Long getProductID() {
+    public int getProductID() {
         return productID;
+    }
+    public void setProductID(int productID) {
+        this.productID=productID;
     }
 
 }

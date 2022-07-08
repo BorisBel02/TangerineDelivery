@@ -16,5 +16,5 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
     @Override
     <S extends ProductEntity> S save(S s);
 
-    Boolean existsByEmail(String email);
+    //Boolean existsByEmail(String email);
 }

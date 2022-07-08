@@ -5,6 +5,7 @@ package com.tangerinedelivery.controllers;
 
 import com.tangerinedelivery.DTOs.LoginDTO;
 import com.tangerinedelivery.DTOs.RegistrationDTO;
+import com.tangerinedelivery.entities.CartInfo;
 import com.tangerinedelivery.entities.ProductEntity;
 import com.tangerinedelivery.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,8 @@ public class TestController{
         list.add(new ProductEntity("Orange", 500, "Just an orange"));
         return list;
     }*/
+    @GetMapping("/cart")
+    CartInfo cart(){return new CartInfo(1,14);}
     @GetMapping("/product")
     ProductEntity prod(){
         return new ProductEntity("Orange", 500, "Just an orange");
@@ -47,6 +50,7 @@ public class TestController{
     ProductEntity post(){
         return productRepo.save(new ProductEntity("Orange", 500, "Just an orange"));
     }
-
 */
+
+
 }
