@@ -67,7 +67,6 @@ public class AuthService {
         verificationToken.setUserEntity(userRepo.save(newUser));
         tokenRepo.save(verificationToken);
 //mail
-
         SimpleMailMessage confirmMessage = new SimpleMailMessage();
         confirmMessage.setTo(registrationDTO.getEmail());
         confirmMessage.setFrom("citrusgo54@gmail.com");
