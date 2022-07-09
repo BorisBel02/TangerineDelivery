@@ -16,7 +16,7 @@ public class CartService {
     private static CartRepo cartRepo;
     @Autowired
     private ProductRepo productRepo;
-    public static List<CartLineInfo> listCart(UserEntity user){
+    public  List<CartLineInfo> listCart(UserEntity user){
         return cartRepo.findByUser(user);
     }
     public Integer addProduct(Integer productID, Integer quantity, UserEntity user){
@@ -34,7 +34,7 @@ public class CartService {
         cartRepo.save(cartLineInfo);
         return addedQuantity;
     }
-    public float updateQuantity(Integer productID, Integer quantity, UserEntity user){
+    public float updateQuantity(Integer productID, Integer quantity){
         cartRepo.Quantity(quantity);
         ProductEntity product = productRepo.findById(productID).get();
         float subtotal = product.getPrice()*quantity;

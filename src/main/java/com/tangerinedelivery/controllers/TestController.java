@@ -2,14 +2,17 @@
 //класс для проверки работоспособности запросов
 package com.tangerinedelivery.controllers;
 
+import com.tangerinedelivery.entities.CartInfo;
 import com.tangerinedelivery.entities.CartLineInfo;
 import com.tangerinedelivery.entities.UserEntity;
+import com.tangerinedelivery.exception.UserNotFoundException;
 import com.tangerinedelivery.services.CartService;
 import org.springframework.ui.Model;
 import com.tangerinedelivery.DTOs.LoginDTO;
 import com.tangerinedelivery.DTOs.RegistrationDTO;
 import com.tangerinedelivery.entities.ProductEntity;
 import com.tangerinedelivery.repos.ProductRepo;
+import com.tangerinedelivery.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,8 +34,11 @@ public class TestController{
 
     @Autowired
     private ProductRepo productRepo;
+
     @Autowired
     private CartService cartService;
+    @Autowired
+    private UserService userService;
 
 
     @GetMapping("/getRegDTO")
@@ -49,24 +56,25 @@ public class TestController{
         list.add(new ProductEntity("Orange", 500, "Just an orange"));
         return list;
     }*/
-//    @PostMapping("/cart")
-//    public String ShowShoppingCart(@RequestParam("user") UserEntity user, Model model){
-//        List<CartLineInfo> cartLine= CartService.listCart(user);
-//        model.addAttribute("cartLine", cartLine);
-//        return "cart";
-//    }
-//    @PostMapping("/cart/add")
-//    public String addProductToCart(HttpServletRequest request, Model model, @RequestParam("id") Integer id, @RequestParam("quantity")int quantity,@RequestParam("user") UserEntity user) {
-//        String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-//        if (sessionToken == null) {
-//            sessionToken = UUID.randomUUID().toString();
-//            request.getSession().setAttribute("sessionToken", sessionToken);
-//            cartService.addProduct(id, quantity, user);
-//        } else {
-//            cartService.updateQuantity(id, quantity, user);
-//        }
-//            return "redirect:/";
-//    }
+    @GetMapping("/shoppingCart")
+    public String showShoopingCartView(HttpServletRequest request, Model model) {
+
+        return "shoppingCart";
+    }
+
+    @PostMapping("/updateShoppingCart")
+    public String updateCartItem(@RequestParam("item_id") Integer id,
+                                 @RequestParam("quantity") int quantity) {
+
+        cartService.updateQuantity(id,quantity);
+        return "redirect:shoppingCart";
+    }
+    @GetMapping("/removeCartItem/{id}")
+    public String removeItem(@RequestParam("id") Integer id, UserEntity user) {
+        cartService.removeProduct(id,user);
+        return "redirect:/shoppingCart";
+    }
+
 //    @GetMapping("/cart/update")
 //    public String updateQuantity(Integer productId,Integer quantity, UserEntity user){
 //        if(user==null){
