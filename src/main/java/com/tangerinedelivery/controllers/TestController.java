@@ -14,9 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -45,43 +49,46 @@ public class TestController{
         list.add(new ProductEntity("Orange", 500, "Just an orange"));
         return list;
     }*/
-    @GetMapping("/cart")
-    public String ShowShoppingCart(UserEntity user, Model model){
-        List<CartLineInfo> cartLine= CartService.listCart(user);
-        model.addAttribute("cartLine", cartLine);
-        return "cart";
-    }
-    @GetMapping("/cart/add")
-    public String addProductToCart(Integer productId,Integer quantity, UserEntity user){
-       if(user==null){
-           return "You must login";
-       }
-       Integer addedQuantity = cartService.addProduct(productId,quantity,user);
-
-        return addedQuantity +" added";
-    }
-    @GetMapping("/cart/update")
-    public String updateQuantity(Integer productId,Integer quantity, UserEntity user){
-        if(user==null){
-            return "You must login";
-        }
-        float subtotal = cartService.updateQuantity(productId,quantity,user);
-
-        return String.valueOf(subtotal);
-    }
-    @GetMapping("/cart/remove")
-    public String removeProductFromCart(Integer productId,Integer quantity, UserEntity user){
-        if(user==null){
-            return "You must login";
-        }
-        cartService.removeProduct(productId,user);
-
-        return "Remove";
-    }
-    @GetMapping("/product")
-    ProductEntity prod(){
-        return new ProductEntity("Orange", 500, "Just an orange");
-    }
+//    @PostMapping("/cart")
+//    public String ShowShoppingCart(@RequestParam("user") UserEntity user, Model model){
+//        List<CartLineInfo> cartLine= CartService.listCart(user);
+//        model.addAttribute("cartLine", cartLine);
+//        return "cart";
+//    }
+//    @PostMapping("/cart/add")
+//    public String addProductToCart(HttpServletRequest request, Model model, @RequestParam("id") Integer id, @RequestParam("quantity")int quantity,@RequestParam("user") UserEntity user) {
+//        String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
+//        if (sessionToken == null) {
+//            sessionToken = UUID.randomUUID().toString();
+//            request.getSession().setAttribute("sessionToken", sessionToken);
+//            cartService.addProduct(id, quantity, user);
+//        } else {
+//            cartService.updateQuantity(id, quantity, user);
+//        }
+//            return "redirect:/";
+//    }
+//    @GetMapping("/cart/update")
+//    public String updateQuantity(Integer productId,Integer quantity, UserEntity user){
+//        if(user==null){
+//            return "You must login";
+//        }
+//        float subtotal = cartService.updateQuantity(productId,quantity,user);
+//
+//        return String.valueOf(subtotal);
+//    }
+//    @GetMapping("/cart/remove")
+//    public String removeProductFromCart(Integer productId,Integer quantity, UserEntity user){
+//        if(user==null){
+//            return "You must login";
+//        }
+//        cartService.removeProduct(productId,user);
+//
+//        return "Remove";
+//    }
+//    @GetMapping("/product")
+//    ProductEntity prod(){
+//        return new ProductEntity("Orange", 500, "Just an orange");
+//    }
    /* @PostMapping("/")
     ProductEntity post(){
         return productRepo.save(new ProductEntity("Orange", 500, "Just an orange"));

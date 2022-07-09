@@ -11,6 +11,20 @@ public class CartInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long CartId;
+    @Column(name = "user", nullable = false, unique = true)
+    private String user;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setCartLines(List<CartLineInfo> cartLines) {
+        this.cartLines = cartLines;
+    }
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "cart",
