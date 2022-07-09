@@ -32,7 +32,7 @@ public class UserService {
     }
 
     public UserEntity addUser(UserEntity user) throws EmailAlreadyUsedException {
-        if (userRepo.findUserEntityByEmail(user.getEmail()) != null) {
+        if (userRepo.findByEmail(user.getEmail()) != null) {
             throw new EmailAlreadyUsedException("Email already used");
         }
         return userRepo.save(user);

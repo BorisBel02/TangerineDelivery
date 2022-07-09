@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface UserRepo extends CrudRepository<UserEntity, Long> {
-    public UserEntity findUserEntityByEmail(String email);
+    public UserEntity findByEmail(String email);
 
     @Override
     <S extends UserEntity> S save(S s);
