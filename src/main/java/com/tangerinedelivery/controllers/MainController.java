@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
 public class MainController {
 
@@ -21,10 +22,12 @@ public class MainController {
     public MainController(ProductRepo productRepo){
         this.productRepo = productRepo;
     }
+
     @GetMapping("/")
     List<ProductEntity> getAll(){
             return productRepo.findAll();
     }
+
     @GetMapping("/search")
     List<ProductEntity> getProductByName(@RequestParam String name){
         return productRepo.findByName(name);

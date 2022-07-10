@@ -1,6 +1,8 @@
 package com.tangerinedelivery.entities;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -26,17 +28,29 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "emailConfirmed", nullable = false)
+    private Boolean emailConfirmed;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<RoleEntity> roles;
 
+    public Boolean getEmailConfirmed() {
+        return emailConfirmed;
+    }
+
+    public void setEmailConfirmed(Boolean emailConfirmed) {
+        this.emailConfirmed = emailConfirmed;
+    }
+
 //    @Column(name = "userCart")
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private CartEntity cartEntity;
 
     public UserEntity() {
+        emailConfirmed = false;
     }
 
 

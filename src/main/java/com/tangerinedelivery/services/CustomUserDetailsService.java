@@ -1,4 +1,4 @@
-package com.tangerinedelivery.controllers;
+package com.tangerinedelivery.services;
 
 import com.tangerinedelivery.entities.RoleEntity;
 import com.tangerinedelivery.entities.UserEntity;
@@ -28,13 +28,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String Email) throws UsernameNotFoundException {
-        Optional<UserEntity> user = Optional.of(userRepository.findUserEntityByEmail(Email));
+        Optional<UserEntity> user = Optional.of(userRepository.findByEmail(Email));
         if(user.isPresent()){
             return new org.springframework.security.core.userdetails.User(user.get().getEmail(),
                     user.get().getPassword(), mapRolesToAuthorities(user.get().getRoles()));
         }
         else {
-            throw  new UsernameNotFoundException("User not found with username or email:" + Email);
+            throw  new UsernameNotFoundException("User not found with email:" + Email);
         }
     }
 
