@@ -26,11 +26,15 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<RoleEntity> roles;
+
+//    @Column(name = "userCart")
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    private CartEntity cartEntity;
 
     public UserEntity() {
     }

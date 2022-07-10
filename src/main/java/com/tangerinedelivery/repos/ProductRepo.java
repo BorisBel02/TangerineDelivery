@@ -8,10 +8,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
+public interface ProductRepo extends JpaRepository<ProductEntity, Long> {
     List<ProductEntity> findAll();
 
     List<ProductEntity> findByName(String name);
+
+    ProductEntity findByProductID(Long productID);
 
     @Override
     <S extends ProductEntity> S save(S s);

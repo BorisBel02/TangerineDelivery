@@ -5,6 +5,8 @@ import com.tangerinedelivery.exception.EmailAlreadyUsedException;
 import com.tangerinedelivery.exception.UserNotFoundException;
 import com.tangerinedelivery.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +30,7 @@ public class UserService {
 
     public List<UserEntity> findAll()
     {
+        Test();
         return (List<UserEntity>) userRepo.findAll();
     }
 
@@ -37,4 +40,12 @@ public class UserService {
         }
         return userRepo.save(user);
     }
+
+    public void Test()
+    {
+        Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = ((UserDetails)obj);
+        System.out.println();
+    }
+
 }

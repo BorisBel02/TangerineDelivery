@@ -16,16 +16,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     private final CustomUserDetailsService userDetailsService;
 
     @Autowired
-    SecurityConfig(CustomUserDetailsService userDetailsService){
+    SecurityConfig(CustomUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
+
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -40,7 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/search").permitAll()
                 .antMatchers(HttpMethod.GET, "/getRegDTO").permitAll()
                 .antMatchers(HttpMethod.GET, "/getLoginDTO").permitAll()
-                .antMatchers(HttpMethod.GET, "/swagger-ui.html/**").permitAll()
+                .antMatchers(
+                        "/v3/api-docs/**",
+                        "/swagger-ui/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .anyRequest()
                 .authenticated()
