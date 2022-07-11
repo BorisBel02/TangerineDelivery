@@ -30,7 +30,7 @@ public class MainController {
 
     @GetMapping("/search")
     List<ProductEntity> getProductByName(@RequestParam String name){
-        return productRepo.findByName(name);
+        return productRepo.findByNameStartingWith(name);
     }
 
 

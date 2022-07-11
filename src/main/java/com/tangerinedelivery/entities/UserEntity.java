@@ -109,4 +109,11 @@ public class UserEntity {
     public void setRoles(Set<RoleEntity> roles) {
         this.roles = roles;
     }
+
+    public CartEntity getCartEntity() {
+        return cartEntity;
+    }
+    public void setCartEntity(CartEntity cartEntity){
+        this.cartEntity = cartEntity;
+    }
 }

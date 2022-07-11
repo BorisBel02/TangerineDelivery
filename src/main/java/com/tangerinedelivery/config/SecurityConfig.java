@@ -1,6 +1,6 @@
 package com.tangerinedelivery.config;
 
-import com.tangerinedelivery.controllers.CustomUserDetailsService;
+import com.tangerinedelivery.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

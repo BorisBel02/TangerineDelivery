@@ -11,7 +11,7 @@ import java.util.List;
 public interface ProductRepo extends JpaRepository<ProductEntity, Long> {
     List<ProductEntity> findAll();
 
-    List<ProductEntity> findByName(String name);
+    List<ProductEntity> findByNameStartingWith(String name);
 
     ProductEntity findByProductID(Long productID);
 
