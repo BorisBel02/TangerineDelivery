@@ -10,6 +10,7 @@ import java.util.Date;
 
 @Entity
 @Data
+@Table(name = "orders")
 public class OrderEntity {
 
     @Id
@@ -24,10 +25,9 @@ public class OrderEntity {
 
     String address;
 
-    Long userID;//id для поиска всех заказов пользователя
+    Long userID;//для поиска всех заказов пользователя
 
-    @OneToOne(mappedBy = "order", fetch = FetchType.LAZY)
-    private CartEntity cartEntity;
+
 
 
 }

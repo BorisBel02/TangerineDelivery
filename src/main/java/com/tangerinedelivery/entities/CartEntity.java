@@ -21,6 +21,8 @@ public class CartEntity {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
 
+
+
     public CartEntity() {
     }
 

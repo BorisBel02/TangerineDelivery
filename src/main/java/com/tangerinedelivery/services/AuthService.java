@@ -2,8 +2,10 @@ package com.tangerinedelivery.services;
 
 import com.tangerinedelivery.DTOs.LoginDTO;
 import com.tangerinedelivery.DTOs.RegistrationDTO;
+import com.tangerinedelivery.entities.CartEntity;
 import com.tangerinedelivery.entities.UserEntity;
 import com.tangerinedelivery.entities.VerificationToken;
+import com.tangerinedelivery.repos.CartRepo;
 import com.tangerinedelivery.repos.TokenRepo;
 import com.tangerinedelivery.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,7 @@ import java.util.UUID;
 public class AuthService {
 
     private final UserRepo userRepo;
+    private final CartRepo cartRepo;
     private final TokenRepo tokenRepo;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
@@ -32,8 +35,9 @@ public class AuthService {
     private final JavaMailSender mailSender;
 
     @Autowired
-    public AuthService(UserRepo userRepo, TokenRepo tokenRepo, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JavaMailSender mailSender){
+    public AuthService(UserRepo userRepo, CartRepo cartRepo, TokenRepo tokenRepo, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JavaMailSender mailSender){
         this.userRepo = userRepo;
+        this.cartRepo = cartRepo;
         this.tokenRepo = tokenRepo;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
@@ -52,6 +56,9 @@ public class AuthService {
         if(registrationDTO.getPassword().length() < 6){
             return new ResponseEntity<>("Password is too short", HttpStatus.BAD_REQUEST);
         }
+        if(registrationDTO.getFirstName().isEmpty() || registrationDTO.getLastName().isEmpty()){
+            return new ResponseEntity<>("You must fill name fields", HttpStatus.BAD_REQUEST);
+        }
 
         UserEntity newUser = new UserEntity();
 
@@ -60,6 +67,13 @@ public class AuthService {
         newUser.setMiddleName(registrationDTO.getMiddleName());
         newUser.setLastName(registrationDTO.getLastName());
         newUser.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+
+        CartEntity cartEntity = new CartEntity();
+
+        newUser.setCartEntity(cartEntity);
+
+        cartEntity.setUser(newUser);
+        cartRepo.save(cartEntity);
 
         String token = UUID.randomUUID().toString();
         VerificationToken verificationToken = new VerificationToken();
@@ -84,7 +98,11 @@ public class AuthService {
         }
         //update users emailConfirmed field
         UserEntity userEntity = verificationToken.get().getUserEntity();
+        if(userEntity == null){
+            return new ResponseEntity<>("Wrong token", HttpStatus.BAD_REQUEST);
+        }
         userEntity.setEmailConfirmed(true);
+        tokenRepo.delete(verificationToken.get());
         userRepo.save(userEntity);
         return new ResponseEntity<>("Email confirmed", HttpStatus.OK);
     }

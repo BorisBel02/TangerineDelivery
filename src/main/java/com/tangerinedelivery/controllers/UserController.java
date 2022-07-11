@@ -39,7 +39,7 @@ public class UserController {
         this.orderService = orderService;
     }
 
-    @GetMapping("")
+    @GetMapping("/")
     public UserModel usercab(){
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserEntity userEntity = userRepo.findByEmail(userDetails.getUsername());
@@ -65,20 +65,17 @@ public class UserController {
     }
 
 
-    @GetMapping
+    /*@GetMapping
     public ResponseEntity getUser(@RequestParam Long id) {
         try {
             return ResponseEntity.ok(ToModel(userService.findUserById(id)));
         } catch (UserNotFoundException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
-    }
-
-    //new method with /user/orderstory mapping
+    }*/
 
     //new method with /user/cart mapping
 
-    //new method with /user/cart/purchase mapping
 
 
 }
