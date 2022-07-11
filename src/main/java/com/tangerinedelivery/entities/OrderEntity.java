@@ -2,15 +2,14 @@ package com.tangerinedelivery.entities;
 
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
+@Data
 public class OrderEntity {
 
     @Id
