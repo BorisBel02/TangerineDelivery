@@ -34,11 +34,17 @@ public class CartService {
         }
         CartLineEntity cartLine = cartLineRepo.findByCartAndAndProductID(cartRepo.findByUserEmail(userDetails.getUsername()), productID);
         if (cartLine == null) {
-            cartLine = new CartLineEntity();
-            cartLine.setProductID(productID);
-            cartLine.setQuantity(quantity);
-            cartLine.setCart(cartRepo.findByUserEmail(userDetails.getUsername()));
-            cartLineRepo.save(cartLine);
+            if(quantity < 0)
+            {
+                throw new ProductNotFoundException("No such product in this cart");
+            }
+            else {
+                cartLine = new CartLineEntity();
+                cartLine.setProductID(productID);
+                cartLine.setQuantity(quantity);
+                cartLine.setCart(cartRepo.findByUserEmail(userDetails.getUsername()));
+                cartLineRepo.save(cartLine);
+            }
 
         } else {
             cartLine.setQuantity(cartLine.getQuantity() + quantity);
@@ -49,6 +55,10 @@ public class CartService {
             cartLineRepo.save(cartLine);
         }
 
+    }
+
+    public void addProduct(String name, Long quantity) throws ProductNotFoundException {
+        addProduct(productRepo.findByName(name).getProductID(), quantity);
     }
 
     public void removeProduct(Long productID) {

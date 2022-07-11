@@ -30,7 +30,6 @@ public class UserService {
 
     public List<UserEntity> findAll()
     {
-        Test();
         return (List<UserEntity>) userRepo.findAll();
     }
 
@@ -40,12 +39,4 @@ public class UserService {
         }
         return userRepo.save(user);
     }
-
-    public void Test()
-    {
-        Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDetails userDetails = ((UserDetails)obj);
-        System.out.println();
-    }
-
 }
