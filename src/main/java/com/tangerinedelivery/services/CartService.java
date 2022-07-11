@@ -25,6 +25,11 @@ public class CartService {
         this.productRepo = productRepo;
     }
 
+    public CartEntity getCartByEmail(String email)
+    {
+        return cartRepo.findByUserEmail(email);
+    }
+
     public void addProduct(Long productID, Long quantity) throws ProductNotFoundException {
 
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
