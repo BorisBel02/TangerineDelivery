@@ -23,11 +23,9 @@ public class UserController {
 
 
     @GetMapping("/all")
-    public List<UserEntity> getAll()
-    {
+    public List<UserEntity> getAll() {
         return userService.findAll();
     }
-
 
 
     @GetMapping
@@ -38,18 +36,4 @@ public class UserController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
-
-    @PostMapping
-    public ResponseEntity addUser(@RequestBody UserEntity user) {
-        try {
-            userService.addUser(user);
-            return ResponseEntity.ok("User successfully added");
-        } catch (EmailAlreadyUsedException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
-
 }
