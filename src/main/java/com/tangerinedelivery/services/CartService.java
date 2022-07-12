@@ -33,11 +33,12 @@ public class CartService {
     public void addProduct(Long productID, Long quantity) throws ProductNotFoundException {
 
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        CartEntity cartEntity = cartRepo.findByUserEmail(userDetails.getUsername());
 
         if (productRepo.findByProductID(productID) == null) {
             throw new ProductNotFoundException("Product not found");
         }
-        CartLineEntity cartLine = cartLineRepo.findByCartAndAndProductID(cartRepo.findByUserEmail(userDetails.getUsername()), productID);
+        CartLineEntity cartLine = cartLineRepo.findByCartAndProductID(cartEntity, productID);
         if (cartLine == null) {
             if(quantity < 0)
             {
@@ -47,14 +48,15 @@ public class CartService {
                 cartLine = new CartLineEntity();
                 cartLine.setProductID(productID);
                 cartLine.setQuantity(quantity);
-                cartLine.setCart(cartRepo.findByUserEmail(userDetails.getUsername()));
+                cartLine.setCart(cartEntity);
                 cartLineRepo.save(cartLine);
+                System.out.println();
             }
 
         } else {
             cartLine.setQuantity(cartLine.getQuantity() + quantity);
             if (cartLine.getQuantity() <= 0) {
-                removeProduct(productID);
+                removeProduct(cartLine.getId());
                 return;
             }
             cartLineRepo.save(cartLine);
@@ -67,8 +69,9 @@ public class CartService {
     }
 
     public void removeProduct(Long productID) {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        cartLineRepo.deleteByCartAndProductID(cartRepo.findByUserEmail(userDetails.getUsername()), productID);
+//        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        cartLineRepo.deleteById(productID);
+
     }
 
 }
