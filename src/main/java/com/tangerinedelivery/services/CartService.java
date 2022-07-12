@@ -50,7 +50,6 @@ public class CartService {
                 cartLine.setQuantity(quantity);
                 cartLine.setCart(cartEntity);
                 cartLineRepo.save(cartLine);
-                System.out.println();
             }
 
         } else {
