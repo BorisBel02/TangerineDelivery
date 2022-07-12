@@ -3,7 +3,7 @@ package com.tangerinedelivery.controllers;
 //контроллер на "пусой запрос" - http://tangerinedelivery
 //вывод основной страницы (со всеми продуктами например)
 
-import com.tangerinedelivery.categories.Categories;
+import com.tangerinedelivery.enums.Categories;
 import com.tangerinedelivery.entities.ProductEntity;
 import com.tangerinedelivery.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;

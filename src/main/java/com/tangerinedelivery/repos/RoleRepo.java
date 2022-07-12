@@ -9,4 +9,7 @@ import java.util.Optional;
 
 public interface RoleRepo extends JpaRepository<RoleEntity, Long> {
     Optional<RoleEntity> findByName(String name);
+
+    @Override
+    <S extends RoleEntity> S save(S s);
 }

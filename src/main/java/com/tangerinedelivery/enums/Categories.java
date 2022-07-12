@@ -1,4 +1,4 @@
-package com.tangerinedelivery.categories;
+package com.tangerinedelivery.enums;
 
 public enum Categories {
     FRUIT,

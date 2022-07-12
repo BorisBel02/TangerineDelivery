@@ -1,7 +1,7 @@
 //created by B.Belyavtsev 06.07.2022
 package com.tangerinedelivery.entities;
 
-import com.tangerinedelivery.categories.Categories;
+import com.tangerinedelivery.enums.Categories;
 import lombok.Getter;
 import lombok.Setter;
 
