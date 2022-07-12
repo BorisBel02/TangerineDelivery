@@ -1,9 +1,15 @@
 //created by B.Belyavtsev 06.07.2022
 package com.tangerinedelivery.entities;
 
+import com.tangerinedelivery.categories.Categories;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "products")
 public class ProductEntity {
 
@@ -13,11 +19,19 @@ public class ProductEntity {
 
     private String name;
 
+    private Categories category;
+
+    private int discount;
+
+    private Boolean popular;
+
     private int price;
 
     private String description;
 
     public ProductEntity() {
+        popular = false;
+        discount = 0;
     }
 
 
@@ -28,35 +42,4 @@ public class ProductEntity {
         this.description = description;
     }
 
-    public Long getProductID() {
-        return productID;
-    }
-
-    public void setProductID(Long productID) {
-        this.productID = productID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

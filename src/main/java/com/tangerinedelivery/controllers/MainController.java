@@ -3,12 +3,11 @@ package com.tangerinedelivery.controllers;
 //контроллер на "пусой запрос" - http://tangerinedelivery
 //вывод основной страницы (со всеми продуктами например)
 
+import com.tangerinedelivery.categories.Categories;
 import com.tangerinedelivery.entities.ProductEntity;
 import com.tangerinedelivery.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +32,14 @@ public class MainController {
         return productRepo.findByNameStartingWith(name);
     }
 
+    @GetMapping("/{category}")
+    public List<ProductEntity> getProductsFromCategory(@PathVariable("category") Categories category){
+        return productRepo.findByCategory(category);
+    }
 
+    @GetMapping("/search/{category}")
+    public List<ProductEntity> getProductsByNameFromCategory(@PathVariable("category") Categories category, @RequestParam String name){
+        return productRepo.findByCategoryAndNameStartingWith(category, name);
+    }
 
 }
