@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/main/java/com/tangerinedelivery/repo/entity/CartEntity.java
 package com.tangerinedelivery.repo.entity;
+========
+package com.tangerinedelivery.repos.entities;
+>>>>>>>> origin/develop:src/main/java/com/tangerinedelivery/repos/entities/CartEntity.java
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/main/java/com/tangerinedelivery/repo/entity/UserEntity.java
 package com.tangerinedelivery.repo.entity;
+========
+package com.tangerinedelivery.repos.entities;
+>>>>>>>> origin/develop:src/main/java/com/tangerinedelivery/repos/entities/UserEntity.java
 
 
 

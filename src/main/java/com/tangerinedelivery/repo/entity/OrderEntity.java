@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/main/java/com/tangerinedelivery/repo/entity/OrderEntity.java
 package com.tangerinedelivery.repo.entity;
+========
+package com.tangerinedelivery.repos.entities;
+>>>>>>>> origin/develop:src/main/java/com/tangerinedelivery/repos/entities/OrderEntity.java
 
 
 
