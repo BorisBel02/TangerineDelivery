@@ -30,10 +30,7 @@ public class ProductEntity {
 
     private String description;
 
-    public ProductEntity() {
-        popular = false;
-        discount = 0;
-    }
+    public ProductEntity() {}
 
 
 
@@ -41,6 +38,8 @@ public class ProductEntity {
         this.name = name;
         this.price = price;
         this.description = description;
+        popular = false;
+        discount = 0;
     }
 
 }
