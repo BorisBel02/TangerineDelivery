@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CartService {
-    private CartRepo cartRepo;
-    private CartLineRepo cartLineRepo;
-    private ProductRepo productRepo;
+    private final CartRepo cartRepo;
+    private final CartLineRepo cartLineRepo;
+    private final ProductRepo productRepo;
 
     @Autowired
     public CartService(CartRepo cartRepo, CartLineRepo cartLineRepo, ProductRepo productRepo) {

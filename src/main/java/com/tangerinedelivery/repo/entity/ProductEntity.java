@@ -1,9 +1,6 @@
 //created by B.Belyavtsev 06.07.2022
-<<<<<<<< HEAD:src/main/java/com/tangerinedelivery/repo/entity/ProductEntity.java
 package com.tangerinedelivery.repo.entity;
-========
-package com.tangerinedelivery.repos.entities;
->>>>>>>> origin/develop:src/main/java/com/tangerinedelivery/repos/entities/ProductEntity.java
+
 
 import com.tangerinedelivery.enums.Categories;
 import lombok.Getter;

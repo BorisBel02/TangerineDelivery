@@ -70,7 +70,7 @@ public class OrderService {
             message += productEntity.getName() + " - " + e.getQuantity() + ", price: " + price + '\n';
             totalPrice += price;
         }
-        message += "\nTotal price: " + totalPrice.toString();
+        message += "\nTotal price: " + totalPrice;
         orderRepo.save(order);
         cartRepo.delete(cartEntity);
         SimpleMailMessage orderMessage = new SimpleMailMessage();

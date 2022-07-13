@@ -1,9 +1,4 @@
-<<<<<<<< HEAD:src/main/java/com/tangerinedelivery/repo/entity/CartLineEntity.java
 package com.tangerinedelivery.repo.entity;
-========
-package com.tangerinedelivery.repos.entities;
->>>>>>>> origin/develop:src/main/java/com/tangerinedelivery/repos/entities/CartLineEntity.java
-
 import javax.persistence.*;
 
 @Entity
