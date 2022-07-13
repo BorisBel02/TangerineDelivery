@@ -3,9 +3,9 @@
 package com.tangerinedelivery.controllers;
 
 
-import com.tangerinedelivery.DTOs.LoginDTO;
-import com.tangerinedelivery.DTOs.RegistrationDTO;
-import com.tangerinedelivery.entities.ProductEntity;
+import com.tangerinedelivery.controllers.dto.LoginDTO;
+import com.tangerinedelivery.controllers.dto.RegistrationDTO;
+import com.tangerinedelivery.repos.entities.ProductEntity;
 import com.tangerinedelivery.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

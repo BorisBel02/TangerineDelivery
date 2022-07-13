@@ -1,8 +1,6 @@
 package com.tangerinedelivery.models;
 
-import com.tangerinedelivery.entities.UserEntity;
-
-import javax.persistence.Column;
+import com.tangerinedelivery.repos.entities.UserEntity;
 
 public class UserModel {
     private Long id;

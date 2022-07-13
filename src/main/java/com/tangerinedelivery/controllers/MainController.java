@@ -4,7 +4,7 @@ package com.tangerinedelivery.controllers;
 //вывод основной страницы (со всеми продуктами например)
 
 import com.tangerinedelivery.enums.Categories;
-import com.tangerinedelivery.entities.ProductEntity;
+import com.tangerinedelivery.repos.entities.ProductEntity;
 import com.tangerinedelivery.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,9 +37,10 @@ public class MainController {
         return productRepo.findByCategory(category);
     }
 
-    @GetMapping("/search/{category}")
+    @GetMapping("/{category}/search")
     public List<ProductEntity> getProductsByNameFromCategory(@PathVariable("category") Categories category, @RequestParam String name){
         return productRepo.findByCategoryAndNameStartingWith(category, name);
     }
+
 
 }

@@ -5,6 +5,7 @@ import com.tangerinedelivery.repos.CartRepo;
 import com.tangerinedelivery.repos.OrderRepo;
 import com.tangerinedelivery.repos.ProductRepo;
 import com.tangerinedelivery.repos.UserRepo;
+import com.tangerinedelivery.repos.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

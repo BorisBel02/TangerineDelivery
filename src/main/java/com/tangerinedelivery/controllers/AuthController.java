@@ -1,7 +1,7 @@
 package com.tangerinedelivery.controllers;
 
-import com.tangerinedelivery.DTOs.LoginDTO;
-import com.tangerinedelivery.DTOs.RegistrationDTO;
+import com.tangerinedelivery.controllers.dto.LoginDTO;
+import com.tangerinedelivery.controllers.dto.RegistrationDTO;
 import com.tangerinedelivery.repos.RoleRepo;
 import com.tangerinedelivery.repos.UserRepo;
 import com.tangerinedelivery.services.AuthService;

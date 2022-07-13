@@ -1,6 +1,6 @@
 package com.tangerinedelivery.models;
 
-import com.tangerinedelivery.entities.CartLineEntity;
+import com.tangerinedelivery.repos.entities.CartLineEntity;
 
 public class CartLineModel {
 

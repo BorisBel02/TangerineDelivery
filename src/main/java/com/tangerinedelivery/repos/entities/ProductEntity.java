@@ -1,5 +1,5 @@
 //created by B.Belyavtsev 06.07.2022
-package com.tangerinedelivery.entities;
+package com.tangerinedelivery.repos.entities;
 
 import com.tangerinedelivery.enums.Categories;
 import lombok.Getter;
@@ -21,7 +21,7 @@ public class ProductEntity {
 
     private Categories category;
 
-    private int discount;
+    private short discount;
 
     private Boolean popular;
 

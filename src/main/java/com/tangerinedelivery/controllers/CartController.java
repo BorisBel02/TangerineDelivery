@@ -1,6 +1,5 @@
 package com.tangerinedelivery.controllers;
 
-import com.tangerinedelivery.entities.CartLineEntity;
 import com.tangerinedelivery.exception.ProductNotFoundException;
 import com.tangerinedelivery.models.CartLineModel;
 import com.tangerinedelivery.services.CartService;

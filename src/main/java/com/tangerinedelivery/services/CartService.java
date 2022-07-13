@@ -1,13 +1,12 @@
 package com.tangerinedelivery.services;
 
-import com.tangerinedelivery.entities.CartEntity;
-import com.tangerinedelivery.entities.CartLineEntity;
+import com.tangerinedelivery.repos.entities.CartEntity;
+import com.tangerinedelivery.repos.entities.CartLineEntity;
 import com.tangerinedelivery.exception.ProductNotFoundException;
 import com.tangerinedelivery.repos.CartLineRepo;
 import com.tangerinedelivery.repos.CartRepo;
 import com.tangerinedelivery.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;

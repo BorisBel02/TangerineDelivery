@@ -1,6 +1,6 @@
 package com.tangerinedelivery.repos;
 
-import com.tangerinedelivery.entities.VerificationToken;
+import com.tangerinedelivery.repos.entities.VerificationToken;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

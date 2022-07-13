@@ -1,4 +1,4 @@
-package com.tangerinedelivery.DTOs;
+package com.tangerinedelivery.controllers.dto;
 
 import lombok.Data;
 

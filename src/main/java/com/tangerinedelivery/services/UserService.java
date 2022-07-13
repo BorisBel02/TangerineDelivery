@@ -1,12 +1,10 @@
 package com.tangerinedelivery.services;
 
-import com.tangerinedelivery.entities.UserEntity;
+import com.tangerinedelivery.repos.entities.UserEntity;
 import com.tangerinedelivery.exception.EmailAlreadyUsedException;
 import com.tangerinedelivery.exception.UserNotFoundException;
 import com.tangerinedelivery.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

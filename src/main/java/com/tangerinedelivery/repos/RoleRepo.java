@@ -2,7 +2,7 @@ package com.tangerinedelivery.repos;
 
 
 
-import com.tangerinedelivery.entities.RoleEntity;
+import com.tangerinedelivery.repos.entities.RoleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,10 +1,7 @@
 package com.tangerinedelivery.controllers;
 
-import com.tangerinedelivery.entities.OrderEntity;
-import com.tangerinedelivery.entities.UserEntity;
-import com.tangerinedelivery.exception.EmailAlreadyUsedException;
-import com.tangerinedelivery.exception.UserNotFoundException;
-import com.tangerinedelivery.repos.OrderRepo;
+import com.tangerinedelivery.repos.entities.OrderEntity;
+import com.tangerinedelivery.repos.entities.UserEntity;
 import com.tangerinedelivery.repos.UserRepo;
 import com.tangerinedelivery.services.OrderService;
 
@@ -21,8 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static com.tangerinedelivery.models.UserModel.ToModel;
 
 @RestController
 @RequestMapping("/user")

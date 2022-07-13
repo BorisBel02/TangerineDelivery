@@ -1,10 +1,10 @@
 package com.tangerinedelivery.services;
 
-import com.tangerinedelivery.DTOs.LoginDTO;
-import com.tangerinedelivery.DTOs.RegistrationDTO;
-import com.tangerinedelivery.entities.CartEntity;
-import com.tangerinedelivery.entities.UserEntity;
-import com.tangerinedelivery.entities.VerificationToken;
+import com.tangerinedelivery.controllers.dto.LoginDTO;
+import com.tangerinedelivery.controllers.dto.RegistrationDTO;
+import com.tangerinedelivery.repos.entities.CartEntity;
+import com.tangerinedelivery.repos.entities.UserEntity;
+import com.tangerinedelivery.repos.entities.VerificationToken;
 import com.tangerinedelivery.repos.CartRepo;
 import com.tangerinedelivery.repos.TokenRepo;
 import com.tangerinedelivery.repos.UserRepo;
