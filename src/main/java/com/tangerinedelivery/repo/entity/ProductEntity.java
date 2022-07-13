@@ -31,6 +31,7 @@ public class ProductEntity {
     private int price;
 
     private String description;
+
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "product", orphanRemoval = true)
         private List<CommentEntity> comments = new ArrayList<>();
     public ProductEntity() {
@@ -44,6 +45,8 @@ public class ProductEntity {
         this.name = name;
         this.price = price;
         this.description = description;
+        popular = false;
+        discount = 0;
     }
 
 }
