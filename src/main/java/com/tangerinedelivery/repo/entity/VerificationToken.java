@@ -1,5 +1,6 @@
 package com.tangerinedelivery.repo.entity;
 
+
 import lombok.Getter;
 import lombok.Setter;
 

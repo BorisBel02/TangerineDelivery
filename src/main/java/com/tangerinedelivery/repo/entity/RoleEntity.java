@@ -1,3 +1,4 @@
+
 package com.tangerinedelivery.repo.entity;
 
 import javax.persistence.*;
