@@ -42,8 +42,8 @@ public class UserController {
     }
 
     @GetMapping("/cart/purchase")
-    public ResponseEntity<String> purchase(@RequestParam String address){
-        return orderService.purchaseCart(address);
+    public ResponseEntity<String> purchase(@RequestParam String address, @RequestParam String details){
+        return orderService.purchaseCart(address,details);
     }
     @GetMapping("ordershistory")
     public List<OrderEntity> orders(){

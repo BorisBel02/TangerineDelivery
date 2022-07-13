@@ -23,6 +23,8 @@ public class OrderEntity {
 
     String status;
 
+    String details;
+
     Date date;
 
     String address;

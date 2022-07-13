@@ -54,5 +54,12 @@ public class CommentService {
         Optional<CommentEntity> comment = commentRepo.findById(commentId);
         comment.ifPresent(commentRepo::delete);
     }
+    public CommentDTO commentToCommentDTO(CommentEntity comment) {
+        CommentDTO commentDTO = new CommentDTO();
+        commentDTO.setId(comment.getId());
+        commentDTO.setUsername(comment.getUsername());
+        commentDTO.setMessage(comment.getMessage());
 
+        return commentDTO;
+    }
 }

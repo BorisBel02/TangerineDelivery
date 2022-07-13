@@ -36,7 +36,7 @@ public class OrderService {
         this.mailSender = mailSender;
         this.productRepo = productRepo;
     }
-    public ResponseEntity<String> purchaseCart(String address){
+    public ResponseEntity<String> purchaseCart(String address, String details){
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserEntity userEntity = userRepo.findByEmail(userDetails.getUsername());
         if(!userEntity.getEmailConfirmed()){
@@ -59,6 +59,7 @@ public class OrderService {
         OrderEntity order = new OrderEntity();
         order.setAddress(address);
         order.setDate(new Date());
+        order.setDetails(details);
         order.setUserID(userEntity.getUserID());
         order.setStatus("Formed");
         String message = "";
