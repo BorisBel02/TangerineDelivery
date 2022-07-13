@@ -1,4 +1,4 @@
-package com.tangerinedelivery.repos.entities;
+package com.tangerinedelivery.repo.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
