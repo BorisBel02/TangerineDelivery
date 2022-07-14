@@ -25,16 +25,16 @@ import java.util.stream.Collectors;
         private CommentService commentService;
 
         @PostMapping("/{commentId}/create")
-        public ResponseEntity createComment(@RequestParam(value = "productid") Long productid, CommentDTO commentDTO,@RequestParam(value = "userid") Long userid) throws ProductNotFoundException {
+        public ResponseEntity createComment(@PathVariable("commentId") Long commentId, @RequestParam(value = "productId") Long productId, CommentDTO commentDTO,@RequestParam(value = "userid") Long userid) throws ProductNotFoundException {
             {
-                CommentEntity comment = commentService.saveComment(Long.parseLong(String.valueOf(productid)), commentDTO, String.valueOf(userid));
+                CommentEntity comment = commentService.saveComment(Long.parseLong(String.valueOf(productId)), commentDTO, String.valueOf(userid));
                 CommentDTO createdComment = commentService.commentToCommentDTO(comment);
                 return new ResponseEntity<>(createdComment, HttpStatus.OK);
             }
         }
-        @GetMapping("/productId}/all")
-        public ResponseEntity<List<CommentDTO>> getAllCommentsToPost(@PathVariable("productid") Long productid) {
-            List<CommentDTO> commentDTOList = commentService.getAllCommentsForProduct(Long.parseLong(String.valueOf(productid)))
+        @GetMapping("/{productId}/all")
+        public ResponseEntity<List<CommentDTO>> getAllCommentsToPost(@PathVariable("productId") Long productId) {
+            List<CommentDTO> commentDTOList = commentService.getAllCommentsForProduct(Long.parseLong(String.valueOf(productId)))
                     .stream()
                     .map(commentService::commentToCommentDTO)
                     .collect(Collectors.toList());

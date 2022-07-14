@@ -13,6 +13,9 @@ public class RoleEntity {
     @Column(length = 60)
     private String name;
 
+    public RoleEntity() {
+    }
+
     public long getId() {
         return id;
     }
